@@ -12,9 +12,8 @@
 
 <body>
   <main class="container">
-    <header>
-      <h1>Drag and Drop the correct options</h1>
-    </header>
+    <h2 class="container__title">Match the questions with the correct answers</h2>
+    
     <section class="options">
       <button id="opt1" class="options__btn">Cat</button>
       <button id="opt2" class="options__btn">Dog</button>
@@ -22,14 +21,45 @@
       <button id="opt1" class="options__btn">Goat</button>
     </section>
 
-    <section class="questions_box">
-      <ul class="questions">
-        <li class="questions__container">One of these lives in water</li>
-        <li class="questions__container">Which one barks?</li>
-        <li class="questions__container">Which is used for beef?</li>
-        <li class="questions__container">Which is your favorite granny's pet?</li>
-      </ul>
+    <section class="questions">
+        <div class="question-box" id="que1">
+          <p class="question-box__text">Which lives in water?</p>
+          <div class="question-box__drop-zone">
+            <p class="question-box__drop-zone__text">
+              Drop here
+            </p>
+          </div>
+        </div>
+        <div class="question-box" id="que2">
+          <p class="question-box__text">Which one barks?</p>
+          <div class="question-box__drop-zone">
+            <p class="question-box__drop-zone__text">
+              Drop here
+            </p>
+          </div>
+        </div>
+        <div class="question-box" id="que3">
+          <p class="question-box__text">Which is beef gotten from?</p>
+          <div class="question-box__drop-zone">
+            <p class="question-box__drop-zone__text">
+              Drop here
+            </p>
+          </div>
+        </div>
+        <div class="question-box" id="que4">
+          <p class="question-box__text">Which has 9 lives?</p>
+          <div class="question-box__drop-zone">
+            <p class="question-box__drop-zone__text">
+              Drop here
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <div class="submit-box">
+      <button class="submit-box__button">Check Answer</button>
+    </div>
   </main>
 
 </body>

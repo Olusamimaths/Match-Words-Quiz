@@ -1,22 +1,100 @@
-$button-background: "457b9d";
-$button-color: "#f1faee";
-$primary-color: "#1d3557";
-$primary-background-color: "#f1faee";
+$button-background: #457b9d;
+$button-color: #f1faee;
+$primary-color: #1d3557;
+$primary-background-color: #f1faee;
+$secondary-color: #e63946;
+$secondary-background-color: #1d3557;
+$border-color: #457b9d;
+$font-stack: Helvetica, sans-serif;
+$button-padding: 0.9rem;
+$button-margin: 1rem 0.5rem 1rem 0;
+$button-font-size: 1rem;
 
-body {
+* {
     padding: 0;
-    margin: 0;
+    margin: 0;  
     box-sizing: border-box;
+}
+
+body { 
     display: flex;
-    justify-content: center;
+    background-color: $primary-background-color;
+    width: 100%;
+    font: 100% $font-stack;
+
     .container {
+        padding: 1rem;
         display: flex;
         flex-direction: column;
-        width: 100%;
         justify-content: center;
-        align-items: left;
-        background-color: yellow;
-        margin: auto auto;
+        align-items: center;
+        margin: 1rem auto;
+        
+        .container__title {
+            color: $secondary-color;
+            margin: 2rem 0;
+        }
+
+        .options {
+            width: 100%;
+
+            .options__btn {
+                padding: $button-padding;
+                margin: $button-margin;
+                color: $button-color;
+                background-color: $button-background;
+                border: 0;
+                border-radius: 0.4rem;
+                font-size: $button-font-size;
+                text-transform: uppercase;
+
+                &:hover {
+                    background-color: $secondary-background-color;
+                    cursor: grab;
+                }
+            }
+        }
+
+        .questions {
+            width: 100%;
+            
+            .question-box {
+                margin: 1rem 0;
+                width: 100%;
+                padding: 1rem;
+                border: 2px dashed $border-color;
+                display: flex;
+                justify-content: space-between;
+                
+                .question-box__text {
+                    color: $primary-color;
+                }
+
+                .question-box__drop-zone {
+                    .question-box__drop-zone__text {
+                        opacity: 0.3;
+                    }
+                }
+
+            }
+        }
+
+        .submit-box {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+
+            .submit-box__button {
+                padding: $button-padding;
+                text-transform: uppercase;
+                font-size: $button-font-size;
+                
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+
     }
 }
 
