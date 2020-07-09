@@ -1,3 +1,22 @@
-.options {
-    background-color: red($color: #000000);
+$button-background: "457b9d";
+$button-color: "#f1faee";
+$primary-color: "#1d3557";
+$primary-background-color: "#f1faee";
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    .container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: left;
+        background-color: yellow;
+        margin: auto auto;
+    }
 }
+

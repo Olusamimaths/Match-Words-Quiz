@@ -25,13 +25,13 @@
     "build:scss": "node-sass --output-style compressed -r src -o public/css",
     "build:tsc": "tsc",
     "watch:tsc": "tsc -w",
-    "watch_ignore:scss": "onchange \"src/**/*.scss\" -- run-s build:scss",
+    "watch:scss": "onchange \"src/**/*.scss\" -- run-s build:scss",
     "watch:assets": "onchange \"src/**/*.js\" \"src/**/*.css\" \"src/**/*.html\" \"src/**/*.{png,jpg,gif}\" -- run-s build:assets",
     "watch": "run-p serve watch:*",
     "lint": "tslint -c tslint.json -p ."
   },
   "devDependencies": {
-    "browser-sync": "^2.18.0",
+    "browser-sync": "^2.18.12",
     "copyfiles": "^1.2.0",
     "node-sass": "^4.5.0",
     "npm-run-all": "^4.0.0",
