@@ -28,7 +28,8 @@
     "watch:scss": "onchange \"src/**/*.scss\" -- run-s build:scss",
     "watch:assets": "onchange \"src/**/*.js\" \"src/**/*.css\" \"src/**/*.html\" \"src/**/*.{png,jpg,gif}\" -- run-s build:assets",
     "watch": "run-p serve watch:*",
-    "lint": "tslint -c tslint.json -p ."
+    "lint": "tslint -c tslint.json -p .",
+    "deploy": "copyfiles -u 1 \"public/*\"  \"public/*/*\" docs"
   },
   "devDependencies": {
     "browser-sync": "^2.18.12",
