@@ -12,7 +12,7 @@ This is a pretty simple app and that is why I choose it. I am using it to learn 
 - UML diagramming
 
 ## Inspiration
-I saw it in one of Udacity's course quiz and decided to build it out with technologies I was interested in learn
+I saw it in one of Udacity's course quiz and decided to build it out with technologies I was interested in learning.
 
 ## Live project
 The live project is available here: [https://olusamimaths.github.io/Match-Words-Quiz/](https://olusamimaths.github.io/Match-Words-Quiz/)
