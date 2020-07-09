@@ -27,7 +27,8 @@
     "watch:tsc": "tsc -w",
     "watch_ignore:scss": "onchange \"src/**/*.scss\" -- run-s build:scss",
     "watch:assets": "onchange \"src/**/*.js\" \"src/**/*.css\" \"src/**/*.html\" \"src/**/*.{png,jpg,gif}\" -- run-s build:assets",
-    "watch": "run-p serve watch:*"
+    "watch": "run-p serve watch:*",
+    "lint": "tslint -c tslint.json -p ."
   },
   "devDependencies": {
     "browser-sync": "^2.18.0",
@@ -35,6 +36,7 @@
     "node-sass": "^4.5.0",
     "npm-run-all": "^4.0.0",
     "onchange": "^3.2.0",
-    "typescript": "^2.3.0"
+    "tslint": "^6.1.2",
+    "typescript": "^2.9.2"
   }
 }
