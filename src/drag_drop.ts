@@ -21,6 +21,8 @@ function dropHandler(ev): void {
     parent.appendChild(elemToMove)
     // make the 'Dro here' text invisible
     parent.firstElementChild.style.opacity = 0
+    // this helps to center the button
+    parent.style.paddingBottom = '1rem'
 }
 
 function setEventHandler(event: string, eventHandler, query: string): void {
@@ -32,6 +34,15 @@ function setEventHandler(event: string, eventHandler, query: string): void {
     }
 }
 
+/**
+ * SWITCHING THE CONTENTS OF BUTTONS
+ * when a button is dropped on another button
+ * switch their text
+ * how? 
+ * drop handler holds the destination
+ * drag start handler holds the source 
+ * 
+ */
 function buttonDragOverHandler(ev): void {
     console.log('dragover button')
     ev.preventDefault()
@@ -40,26 +51,16 @@ function buttonDragOverHandler(ev): void {
 
 function buttonDropHandler(ev): void {
     console.log('drop button')
-    // get the id of the item to move and add it to the dom of the destination
+    // get the id of the button to move 
     const id = ev.dataTransfer.getData('text/html')
+    // we only need the text in the button comming in
     const textSource = document.getElementById(id).innerText
-    
+    // get the text in the destination button
     const textDestination =  ev.target.innerText
     // switch their texts
     document.getElementById(id).innerText = textDestination
     ev.target.innerText = textSource
 }
-/**
- * when a button is dropped on another button
- * switch their text
- * how? 
- * drop handler holds the destination
- * drag start handler holds the source 
- * 
- */
-
-
-
 
 
 function setUp(): void {

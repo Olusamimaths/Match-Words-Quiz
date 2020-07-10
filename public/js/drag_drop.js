@@ -15,6 +15,7 @@ function dropHandler(ev) {
     var parent = ev.target.parentElement;
     parent.appendChild(elemToMove);
     parent.firstElementChild.style.opacity = 0;
+    parent.style.paddingBottom = '1rem';
 }
 function setEventHandler(event, eventHandler, query) {
     var elements = document.querySelectorAll(query);
