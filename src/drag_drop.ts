@@ -1,30 +1,9 @@
-function dragstartHandler(ev): void {
-    console.log('dragstart')
-    ev.dataTransfer.setData('text/html', ev.target.id)
-    ev.dataTransfer.dropEffect = "move"
-}
-
-function dragoverHandler(ev): void {
-    console.log('dragover')
-    ev.preventDefault()
-    ev.dataTransfer.dropEffect = "move"
-}
-
-function dropHandler(ev): void {
-    console.log('drop')
-    // get the id of the item to move and add it to the dom of the destination
-    const id = ev.dataTransfer.getData('text/html')
-    const elemToMove = document.getElementById(id)
-    // get the parent of the destination element
-    const parent = ev.target.parentElement
-    // add elemToMove as a sibling of the destination element
-    parent.appendChild(elemToMove)
-    // make the 'Dro here' text invisible
-    parent.firstElementChild.style.opacity = 0
-    // this helps to center the button
-    parent.style.paddingBottom = '1rem'
-}
-
+/**
+ * This function adds an event listner to an Html element
+ * @param event - the type of event 
+ * @param eventHandler - the function that handles the event
+ * @param query - the query for selecting the element
+ */
 function setEventHandler(event: string, eventHandler, query: string): void {
     // get all the buttons
     const elements = document.querySelectorAll(query)
@@ -35,6 +14,39 @@ function setEventHandler(event: string, eventHandler, query: string): void {
 }
 
 /**
+ * Attached to the buttons to make them draggable unto the question boxes
+ * @param ev - event fired on the source option button
+ */
+function dragstartHandler(ev): void {
+    ev.dataTransfer.setData('text/html', ev.target.id)
+    ev.dataTransfer.dropEffect = "move"
+}
+
+/**
+ * Attached alongside dropHandler to the question box to make it droppable
+ * @param ev 
+ */
+function dragoverHandler(ev): void {
+    ev.preventDefault()
+    ev.dataTransfer.dropEffect = "move"
+}
+
+function dropHandler(ev): void {
+    // get the id of the item to move and add it to the dom of the destination
+    const id = ev.dataTransfer.getData('text/html')
+    const elemToMove = document.getElementById(id)
+    // get the parent of the destination element
+    const parent = ev.target.parentElement
+    // add elemToMove as a sibling of the destination element
+    parent.appendChild(elemToMove)
+    // make the 'Drop here' text invisible
+    parent.firstElementChild.style.opacity = 0
+    // this helps to center the button
+    parent.style.paddingBottom = '1rem'
+}
+
+
+/**
  * SWITCHING THE CONTENTS OF BUTTONS
  * when a button is dropped on another button
  * switch their text
@@ -43,14 +55,12 @@ function setEventHandler(event: string, eventHandler, query: string): void {
  * drag start handler holds the source 
  * 
  */
-function buttonDragOverHandler(ev): void {
-    console.log('dragover button')
+function buttonSwitchingDragOverHandler(ev): void {
     ev.preventDefault()
     ev.dataTransfer.dropEffect = "copy"
 }
 
-function buttonDropHandler(ev): void {
-    console.log('drop button')
+function buttonSwitchingDropHandler(ev): void {
     // get the id of the button to move 
     const id = ev.dataTransfer.getData('text/html')
     // we only need the text in the button comming in
@@ -68,8 +78,8 @@ function setUp(): void {
     setEventHandler('dragover', dragoverHandler, '.question-box__drop-zone')
     setEventHandler('drop', dropHandler, '.question-box__drop-zone__text')
 
-    setEventHandler('dragover', buttonDragOverHandler, '.options__btn')
-    setEventHandler('drop', buttonDropHandler, '.options__btn')
+    setEventHandler('dragover', buttonSwitchingDragOverHandler, '.options__btn')
+    setEventHandler('drop', buttonSwitchingDropHandler, '.options__btn')
 }
 
 setUp()
