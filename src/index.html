@@ -15,16 +15,16 @@
     <h2 class="container__title">Match the questions with the correct answers</h2>
     
     <section class="options">
-      <button id="opt1" class="options__btn">Cat</button>
-      <button id="opt2" class="options__btn">Dog</button>
-      <button id="opt1" class="options__btn">Fish</button>
-      <button id="opt1" class="options__btn">Goat</button>
+      <button id="opt1" class="options__btn" draggable="true">Cat</button>
+      <button id="opt2" class="options__btn" draggable="true">Dog</button>
+      <button id="opt1" class="options__btn" draggable="true">Fish</button>
+      <button id="opt1" class="options__btn" draggable="true">Goat</button>
     </section>
 
     <section class="questions">
         <div class="question-box" id="que1">
           <p class="question-box__text">Which lives in water?</p>
-          <div class="question-box__drop-zone">
+          <div class="question-box__drop-zone" id="dz1">
             <p class="question-box__drop-zone__text">
               Drop here
             </p>
@@ -63,6 +63,7 @@
   </main>
 
 </body>
-<script src="js/question.js"></script>
+<script src="./js/drag_drop.js"></script>
+<script src="./js/question.js"></script>
 
 </html>
