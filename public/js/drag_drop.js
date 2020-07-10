@@ -1,7 +1,7 @@
 function dragstartHandler(ev) {
     console.log('dragstart');
+    ev.dataTransfer.setData('text/html', ev.target.id);
     ev.dataTransfer.dropEffect = "move";
-    ev.dataTransfer.setData('text/html', ev.target.outerHTML);
 }
 function dragoverHandler(ev) {
     console.log('dragover');
@@ -12,6 +12,8 @@ function dropHandler(ev) {
     console.log('drop');
     var id = ev.dataTransfer.getData('text/html');
     var elemToMove = document.getElementById(id);
+    ev.target.innerHTML = '';
+    ev.target.style.opacity = 1;
     ev.target.appendChild(elemToMove);
 }
 function setEventHandler(event, eventHandler, query) {
@@ -26,8 +28,4 @@ function setUp() {
     setEventHandler('dragover', dragoverHandler, '.question-box__drop-zone__text');
     setEventHandler('drop', dropHandler, '.question-box__drop-zone__text');
 }
-var buttons = document.querySelectorAll('.options__btn');
-for (var i = 0; i < buttons.length; i++) {
-    var button = buttons[i];
-    button.addEventListener('dragstart', dragstartHandler);
-}
+setUp();
