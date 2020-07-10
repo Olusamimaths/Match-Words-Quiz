@@ -1,18 +1,18 @@
 function dragstartHandler(ev): void {
     console.log('dragstart')
-    ev.preventDefault()
-    console.log(ev)
     ev.dataTransfer.dropEffect = "move"
-    ev.dataTransfer.setData('text/html', ev.target.innerHTML)
+    ev.dataTransfer.setData('text/html', ev.target.outerHTML)
     
 }
 
 function dragoverHandler(ev): void {
+    console.log('dragover')
     ev.preventDefault()
     ev.dataTransfer.dropEffect = "move"
 }
 
 function dropHandler(ev): void {
+    console.log('drop')
     // get the id of the item to move and add it to the dom of the destination
     const id = ev.dataTransfer.getData('text/html')
     const elemToMove = document.getElementById(id)
@@ -38,4 +38,10 @@ function setUp() : void {
 }
 
 
-setUp()
+// setUp()
+
+const buttons = document.querySelectorAll('.options__btn')
+    for(let i = 0; i < buttons.length; i++) {
+        const button = buttons[i]
+        button.addEventListener('dragstart', dragstartHandler)
+    }
