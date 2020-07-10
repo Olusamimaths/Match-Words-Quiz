@@ -12,9 +12,9 @@ function dropHandler(ev) {
     console.log('drop');
     var id = ev.dataTransfer.getData('text/html');
     var elemToMove = document.getElementById(id);
-    ev.target.innerHTML = '';
-    ev.target.style.opacity = 1;
-    ev.target.appendChild(elemToMove);
+    var parent = ev.target.parentElement;
+    parent.appendChild(elemToMove);
+    parent.firstElementChild.style.opacity = 0;
 }
 function setEventHandler(event, eventHandler, query) {
     var elements = document.querySelectorAll(query);
@@ -23,9 +23,24 @@ function setEventHandler(event, eventHandler, query) {
         elem.addEventListener(event, eventHandler);
     }
 }
+function buttonDragOverHandler(ev) {
+    console.log('dragover button');
+    ev.preventDefault();
+    ev.dataTransfer.dropEffect = "copy";
+}
+function buttonDropHandler(ev) {
+    console.log('drop button');
+    var id = ev.dataTransfer.getData('text/html');
+    var textSource = document.getElementById(id).innerText;
+    var textDestination = ev.target.innerText;
+    document.getElementById(id).innerText = textDestination;
+    ev.target.innerText = textSource;
+}
 function setUp() {
     setEventHandler('dragstart', dragstartHandler, '.options__btn');
-    setEventHandler('dragover', dragoverHandler, '.question-box__drop-zone__text');
+    setEventHandler('dragover', dragoverHandler, '.question-box__drop-zone');
     setEventHandler('drop', dropHandler, '.question-box__drop-zone__text');
+    setEventHandler('dragover', buttonDragOverHandler, '.options__btn');
+    setEventHandler('drop', buttonDropHandler, '.options__btn');
 }
 setUp();

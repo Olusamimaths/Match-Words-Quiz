@@ -21,84 +21,86 @@ body {
     background-color: $primary-background-color;
     width: 100%;
     font: 100% $font-stack;
-
-    .container {
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 1rem auto;
-        
-        .container__title {
-            color: $secondary-color;
-            margin: 2rem 0;
-        }
-
-        .options {
-            width: 100%;
-
-            & > * {
-            margin: $button-margin;
-            }
-        }
-        .options__btn {
-            padding: $button-padding;
-            color: $button-color;
-            background-color: $button-background;
-            border: 0;
-            border-radius: 0.4rem;
-            font-size: $button-font-size;
-            text-transform: uppercase;
-
-            &:hover {
-                background-color: $secondary-background-color;
-                cursor: grab;
-            }
-        }
-
-        .questions {
-            width: 100%;
-            
-            .question-box {
-                margin: 1rem 0;
-                width: 100%;
-                height: 5rem;
-                border: 2px dashed $border-color;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0 1rem;
-                
-                .question-box__text {
-                    color: $primary-color;
-                }
-
-                .question-box__drop-zone {
-                    .question-box__drop-zone__text {
-                        opacity: 0.3;
-                    }
-                }
-
-            }
-        }
-
-        .submit-box {
-            display: flex;
-            justify-content: flex-end;
-            width: 100%;
-
-            .submit-box__button {
-                padding: $button-padding;
-                text-transform: uppercase;
-                font-size: $button-font-size;
-                
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-        }
-
-    }
 }
 
+.container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto;
+    
+    .container__title {
+        color: $secondary-color;
+        margin: 2rem 0;
+    }
+
+    .options {
+        width: 100%;
+
+        & > * {
+        margin: $button-margin;
+        }
+    }
+    .options__btn {
+        padding: $button-padding;
+        color: $button-color;
+        background-color: $button-background;
+        border: 0;
+        border-radius: 0.4rem;
+        font-size: $button-font-size;
+        text-transform: uppercase;
+        
+
+        &:hover {
+            background-color: $secondary-background-color;
+            cursor: grab;
+        }
+    }
+
+    .questions {
+        width: 100%;
+        
+        .question-box {
+            margin: 1rem 0;
+            width: 100%;
+            height: 5rem;
+            border: 2px dashed $border-color;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+            
+            .question-box__text {
+                color: $primary-color;
+            }
+
+            .question-box__drop-zone {
+                .question-box__drop-zone__text {
+                    opacity: 0.3;
+                    // height: 2rem;
+                    // width: 5rem;
+                }
+            }
+
+        }
+    }
+
+    .submit-box {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+    }
+    
+    .submit-box__button {
+        padding: $button-padding;
+        text-transform: uppercase;
+        font-size: $button-font-size;
+        
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+}
