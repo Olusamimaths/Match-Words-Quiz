@@ -1,7 +1,10 @@
-function dragStartHandler(ev): void {
+function dragstartHandler(ev): void {
+    console.log('dragstart')
     ev.preventDefault()
-    ev.dataTransfer.setData('text/html', ev.target.outerHTML)
+    console.log(ev)
     ev.dataTransfer.dropEffect = "move"
+    ev.dataTransfer.setData('text/html', ev.target.innerHTML)
+    
 }
 
 function dragoverHandler(ev): void {
@@ -16,18 +19,22 @@ function dropHandler(ev): void {
     ev.target.appendChild(elemToMove)
 }
 
-function setDragStartHandler(): void {
+function setEventHandler(event: string, eventHandler, query: string): void {
     // get all the buttons
-    const buttons = document.querySelectorAll('.options__btn')
-    for(let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener('dragstart', dragStartHandler)
+    const elements = document.querySelectorAll(query)
+    for(let i = 0; i < elements.length; i++) {
+        const elem = elements[i]
+        elem.addEventListener(event, eventHandler)
     }
 }
 
 
 
 function setUp() : void {
-    setDragStartHandler();
+    // setDragStartHandler();
+    setEventHandler('dragstart', dragstartHandler, '.options__btn')
+    setEventHandler('dragover', dragoverHandler, '.question-box__drop-zone__text')
+    setEventHandler('drop', dropHandler, '.question-box__drop-zone__text')
 }
 
 
