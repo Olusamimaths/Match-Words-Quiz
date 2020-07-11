@@ -53,6 +53,7 @@ function dropHandler(ev): void {
  * how? 
  * drop handler holds the destination
  * drag start handler holds the source 
+ * Also, switch their id's - this will help in checking the answers
  * 
  */
 function buttonSwitchingDragOverHandler(ev): void {
@@ -67,9 +68,12 @@ function buttonSwitchingDropHandler(ev): void {
     const textSource = document.getElementById(id).innerText
     // get the text in the destination button
     const textDestination =  ev.target.innerText
-    // switch their texts
+    const id_dest = ev.target.id
+    // switch their texts and id's
     document.getElementById(id).innerText = textDestination
     ev.target.innerText = textSource
+    ev.target.id = id
+    document.getElementById(id).id = id_dest
 }
 
 

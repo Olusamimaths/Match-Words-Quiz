@@ -29,8 +29,11 @@ function buttonSwitchingDropHandler(ev) {
     var id = ev.dataTransfer.getData('text/html');
     var textSource = document.getElementById(id).innerText;
     var textDestination = ev.target.innerText;
+    var id_dest = ev.target.id;
     document.getElementById(id).innerText = textDestination;
     ev.target.innerText = textSource;
+    ev.target.id = id;
+    document.getElementById(id).id = id_dest;
 }
 function setUp() {
     setEventHandler('dragstart', dragstartHandler, '.options__btn');

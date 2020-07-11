@@ -59,13 +59,13 @@ const data: Data = {
     ]
 }
 
-function createOptions(options): void {
+function createOptions({ options  }): void {
     // get the options div
     const container = document.querySelector('.options')
     options.forEach((option, i) => {
         // create an option button element
-        const button = 
-        `<button id=opt${i+1} class="options__btn" draggable="true">${option.text}</button>`
+        const button =
+            `<button id=opt${i + 1} class="options__btn" draggable="true">${option.text}</button>`
         // append it to the container
         container.innerHTML += button
         return;
@@ -73,12 +73,12 @@ function createOptions(options): void {
     // append it to the options div  
 }
 
-function createQuestions(questions): void {
+function createQuestions({ questions }): void {
     // get the questions div
     const container = document.querySelector('.questions')
     questions.forEach((question, i) => {
         const div = `
-        <div class="question-box" id=que${i+1}>
+        <div class="question-box" id=que${i + 1}>
           <p class="question-box__text">${question.text}</p>
           <div class="question-box__drop-zone">
             <p class="question-box__drop-zone__text">
@@ -89,10 +89,9 @@ function createQuestions(questions): void {
         `
         container.innerHTML += div
         return;
-    })
-    // append it to the options div  
+    }) 
 }
 
 
-createOptions(data.options)
-createQuestions(data.questions)
+createOptions(data)
+createQuestions(data)
