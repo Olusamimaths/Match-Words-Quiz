@@ -6,7 +6,7 @@ function setEventHandler(event, eventHandler, query) {
     }
 }
 function dragstartHandler(ev) {
-    ev.dataTransfer.setData('text/html', ev.target.id);
+    ev.dataTransfer.setData('text/plain', ev.target.id);
     ev.dataTransfer.dropEffect = "move";
 }
 function dragoverHandler(ev) {
@@ -14,7 +14,7 @@ function dragoverHandler(ev) {
     ev.dataTransfer.dropEffect = "move";
 }
 function dropHandler(ev) {
-    var id = ev.dataTransfer.getData('text/html');
+    var id = ev.dataTransfer.getData('text/plain');
     var elemToMove = document.getElementById(id);
     var parent = ev.target.parentElement;
     parent.appendChild(elemToMove);
@@ -26,14 +26,18 @@ function buttonSwitchingDragOverHandler(ev) {
     ev.dataTransfer.dropEffect = "copy";
 }
 function buttonSwitchingDropHandler(ev) {
-    var id = ev.dataTransfer.getData('text/html');
-    var textSource = document.getElementById(id).innerText;
-    var textDestination = ev.target.innerText;
-    var id_dest = ev.target.id;
-    document.getElementById(id).innerText = textDestination;
-    ev.target.innerText = textSource;
-    ev.target.id = id;
-    document.getElementById(id).id = id_dest;
+    var dropped_id = ev.dataTransfer.getData('text/plain');
+    var dropped_text = document.getElementById(dropped_id).innerText;
+    var destination_text = ev.target.innerText;
+    var dest_id = ev.target.id;
+    document.getElementById(dropped_id).innerText = destination_text;
+    document.getElementById(dest_id).innerText = dropped_text;
+    document.getElementById(dropped_id).id = dest_id;
+    var newElements = document.querySelectorAll("#" + dest_id);
+    for (var i = 0; i < newElements.length; i++) {
+        if (newElements[i].innerText === dropped_text)
+            newElements[i].id = dropped_id;
+    }
 }
 function setUp() {
     setEventHandler('dragstart', dragstartHandler, '.options__btn');
