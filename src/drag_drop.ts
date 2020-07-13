@@ -18,7 +18,7 @@ function setEventHandler(event: string, eventHandler, query: string): void {
  * @param ev - event fired on the source option button
  */
 function dragstartHandler(ev): void {
-    ev.dataTransfer.setData('text/html', ev.target.id)
+    ev.dataTransfer.setData('text/plain', ev.target.id)
     ev.dataTransfer.dropEffect = "move"
 }
 
@@ -33,7 +33,7 @@ function dragoverHandler(ev): void {
 
 function dropHandler(ev): void {
     // get the id of the item to move and add it to the dom of the destination
-    const id = ev.dataTransfer.getData('text/html')
+    const id = ev.dataTransfer.getData('text/plain')
     const elemToMove = document.getElementById(id)
     // get the parent of the destination element
     const parent = ev.target.parentElement
@@ -56,24 +56,42 @@ function dropHandler(ev): void {
  * Also, switch their id's - this will help in checking the answers
  * 
  */
+
 function buttonSwitchingDragOverHandler(ev): void {
     ev.preventDefault()
     ev.dataTransfer.dropEffect = "copy"
 }
 
+/**
+ * 
+ * @param ev - event fired at the destination
+ */
 function buttonSwitchingDropHandler(ev): void {
-    // get the id of the button to move 
-    const id = ev.dataTransfer.getData('text/html')
-    // we only need the text in the button comming in
-    const textSource = document.getElementById(id).innerText
-    // get the text in the destination button
-    const textDestination =  ev.target.innerText
-    const id_dest = ev.target.id
-    // switch their texts and id's
-    document.getElementById(id).innerText = textDestination
-    ev.target.innerText = textSource
-    ev.target.id = id
-    document.getElementById(id).id = id_dest
+    // get the id of the button to move, the one we are dropping
+    const dropped_id = ev.dataTransfer.getData('text/plain')
+    // we need the text in the source button, the one we are dropping
+    const dropped_text = document.getElementById(dropped_id).innerText
+    // get the text in the destination button, the one we are dropping on
+    const destination_text = ev.target.innerText
+    // ge the id of the destination button
+    const dest_id = ev.target.id
+    // switch their texts
+    document.getElementById(dropped_id).innerText = destination_text // 
+    document.getElementById(dest_id).innerText = dropped_text
+    // switch their id. This is quite tricky
+    // change the id of the one we are dropping
+    document.getElementById(dropped_id).id = dest_id
+    // now we cannot access the dropped via dropped_id because we have changed it
+    // we now have two buttons with id=dest_id
+    // query select both
+    // the one that holds the dropped_text is the one to change its id
+    // why? 
+    // we have switched the texts, so the one that has the dropped_text is actually
+    // the destination button
+    const newElements = document.querySelectorAll(`#${dest_id}`)
+    for (let i = 0; i < newElements.length; i++) {
+        if (newElements[i].innerText === dropped_text) newElements[i].id = dropped_id
+    }
 }
 
 
