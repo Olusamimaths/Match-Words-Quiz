@@ -15,27 +15,36 @@ interface Data {
     options: Array<Option>
 }
 
+interface Result {
+    score: number,
+    hints?: Array<string>
+}
+
 const data: Data = {
     questions: [
         {
             text: "Which lives in water?",
             questionId: 1,
-            optionId: 2
+            optionId: 2,
+            hint: "Question 1 hint: Tilapia is an example."
         },
         {
             text: "Which one barks?",
             questionId: 2,
-            optionId: 3
+            optionId: 3,
+            hint: "Question 2 hint: The kid is called a puppy."
         },
         {
             text: "Which is beef gotten from?",
             questionId: 3,
-            optionId: 4
+            optionId: 4,
+            hint: "Question 3 hint: it is the greatest of all time"
         },
         {
             text: "Which has 9 lives?",
             questionId: 4,
-            optionId: 1
+            optionId: 1,
+            hint: "Question 4 hint: Its curiosity killed it."
         }
     ],
 
@@ -60,13 +69,13 @@ const data: Data = {
 }
 
 function createOptions({ options  }): void {
-    // get the options div
-    const container = document.querySelector('.options')
+    // get the options div element
+    const container : Element = document.querySelector('.options')
     options.forEach((option, i) => {
         // create an option button element
-        const button =
-            `<button id=opt${i + 1} class="options__btn" draggable="true">${option.text}</button>`
-        // append it to the container
+        const button : string =
+            `<button id=opt${i + 1} class="options__btn" draggable="true">${option.text.toUpperCase()}</button>`
+        // append it to the container element
         container.innerHTML += button
         return;
     })
@@ -75,12 +84,13 @@ function createOptions({ options  }): void {
 
 function createQuestions({ questions }): void {
     // get the questions div
-    const container = document.querySelector('.questions')
+    const container : Element = document.querySelector('.questions')
+
     questions.forEach((question, i) => {
-        const div = `
+        const div : string = `
         <div class="question-box" id=que${i + 1}>
           <p class="question-box__text">${question.text}</p>
-          <div class="question-box__drop-zone">
+          <div class="question-box__drop-zone" id=dz_que${i+1}>
             <p class="question-box__drop-zone__text">
               Drop here
             </p>
